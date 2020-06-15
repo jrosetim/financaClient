@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i&subset=greek-ext');
+
+body{
+	/* background-image: url("https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+	background-position: center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-size: cover; */
+	min-height:100vh;
+	font-family: 'Ubuntu', sans-serif;
+	background-color: #F7FAF7;
+}
+ 
+.text-center{
+	color:#8E3FC6;	
+	text-transform:uppercase;
+	font-size: 52px;
+	margin: -50px 0 80px 0;
+	display: block;
+	text-align: center;
+	font-weight: bold;	
+}
+
+.box{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	border-radius:10px;
+	padding:70px 100px;
+	border-style: solid;
+	border-color: #8E3FC6;
+}
+
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:20px;
+	color:#8E3FC6;
+	transition: all 0.5s ease-in-out;
+}
+
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#8E3FC6;
+}
+
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #8E3FC6;	
+}
+
+.btn{
+	color:#F7FAF7;
+	background-color:#8E3FC6;
+	outline: none;
+  border: 0;
+  color: #F7FAF7;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-top:50px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+	width: 100%;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+}
