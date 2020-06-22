@@ -4,8 +4,7 @@ import {Link} from 'react-router-dom';
 
 import './styles.css';
 
-const Login = () => {
-
+const Login: React.FC = () => {
   function handleLogin() {
     alert('Logado com sucesso!');
   };
