@@ -1,55 +1,71 @@
-import React, {useState, ChangeEvent}  from 'react'
+import React, {useState, ChangeEvent, FormEvent}  from 'react'
 import {FiLogIn} from 'react-icons/fi';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
+import api from '../../services/api';
 
 import './styles.css';
 
+interface userData{
+  useremail: string,
+  userpassword: string
+}
+
 const Login: React.FC = () => {
-  const [userEmail, setUserEmail] = useState<String>("");
-  const [userData, setUserData] = useState({ 
-    userEmail: '',
-    userPassword: ''
-  })
+  const [userEmail, setUserEmail] = useState<String>('');
+  const [userPassword, setUserPassword] = useState<String>('');
+  const [userDataApi, setUserDataApi] = useState<userData>();
 
-  function handleLogin() {
-    alert('Logado com sucesso!');
-    axios.get(`http://localhost:3333/users/${userEmail}`)
-    .then( response => {
-       const [ userEmail, userPassword ] = response.data;
+  const handleSubmitLogin = (event : FormEvent) => {
+    event.preventDefault();
 
-       setUserData({
-         userEmail,
-         userPassword
-       })
-    } 
-    )
+    api.get(`/users/${userEmail}`)
+      .then((resolve) => {
+        setUserDataApi(resolve.data);    
 
-    console.log(userData);
+        validLogin(resolve.data.useremail, resolve.data.userpassword);
+      });
   };
 
+  const validLogin = (userEmailParam: String, userPasswordParam: String) => {    
+    if (userDataApi) {
+      //console.log({userEmail, dataApiEmail: userDataApi?.useremail, userPassword, userDataApiPassword: userDataApi?.userpassword});
+      if (userEmail === userEmailParam && userPassword === userPasswordParam){
+        return console.log(`Seja bem vindo ${userDataApi?.useremail}`);
+      }
+
+      return console.log("Usuário ou senha incorretos");
+    }
+  }
+
   function setEmail(event : ChangeEvent<HTMLInputElement>){
-    const value = event.target.value;
-    
     setUserEmail(event.target.value);
+  }
+
+  function setPassword(event : ChangeEvent<HTMLInputElement>){
+    setUserPassword(event.target.value);
   }
 
   return (
     <div className="box">
-      <form className="form">
+      <form className="form" onSubmit={handleSubmitLogin}>
         <span className="text-center">login</span>
         <div className="input-container">
           <input onChange={setEmail} type="text" />
-          <label >Usuário</label>		
+          <label>Usu?rio</label>        
         </div>
-        <div className="input-container">		
-          <input type="password" />
+        <div className="input-container">        
+          <input onChange={setPassword} type="password" />
           <label>Senha</label>
         </div>
 
         <div className="actionsButtons">
-          <button type="button" className="btn" onClick={handleLogin}>Entrar</button> 
-        </div>
+          <button type="submit" className="btn">Entrar</button> 
+
+          <Link to='/'>
+            <button type="submit" className="btn">Sair</button> 
+          </Link>   
+        </div>   
+
       </form>
     </div>
   );
