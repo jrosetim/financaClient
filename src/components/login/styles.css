@@ -1,11 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i&subset=greek-ext');
 
 body{
-	/* background-image: url("https://images.pexels.com/photos/891252/pexels-photo-891252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-	background-position: center;
-    background-origin: content-box;
-    background-repeat: no-repeat;
-    background-size: cover; */
 	min-height:100vh;
 	font-family: 'Ubuntu', sans-serif;
 	background-color: #F7FAF7;

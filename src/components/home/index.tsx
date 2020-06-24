@@ -8,10 +8,12 @@ const Home: React.FC = () => {
       <div className="brand-box">
         <Link to="/login">
           <button className="button">Entrar</button>
-          <button className="button">Cadastrar</button>
           {/* <span className="brand">Entrar</span> */}
         </Link>
-        
+
+        <Link to="/register">
+          <button className="button">Cadastrar</button>
+        </Link>
       </div>
       
       <div className="text-box">

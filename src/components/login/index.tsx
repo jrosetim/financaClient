@@ -33,7 +33,7 @@ const Login: React.FC = () => {
         return console.log(`Seja bem vindo ${userDataApi?.useremail}`);
       }
 
-      return console.log("Usuário ou senha incorretos");
+      return console.log("Usuรกrio ou senha incorretos");
     }
   }
 
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
         <span className="text-center">login</span>
         <div className="input-container">
           <input onChange={setEmail} type="text" />
-          <label>Usu?rio</label>        
+          <label>Usuário</label>        
         </div>
         <div className="input-container">        
           <input onChange={setPassword} type="password" />

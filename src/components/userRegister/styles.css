@@ -1,0 +1,105 @@
+.boxRegister{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	border-radius:10px;
+	padding:70px 100px;
+	border-style: solid;
+	border-color: rgba(30, 108, 217, 0.8);
+}
+
+.formRegister,
+.labelRegister {
+  display: block;
+  padding: 10px;
+}
+.formRegister {
+  width: 700px;
+  margin: 10px;
+}
+.formRegister .labelRegister {
+  color: rgba(30, 108, 217, 0.8);
+  text-align: center;
+}
+
+.inputRegister{
+	position:relative;
+	margin-bottom:25px;
+}
+
+.inputRegister label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:20px;
+	color:#8E3FC6;
+	transition: all 0.5s ease-in-out;
+}
+
+.inputRegister input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#8E3FC6;
+}
+
+.formRegister 
+.inputRegister {
+  display: inline-block;
+  padding-left: 10px;
+  border-style: none;
+  height: 40px;
+  width: 500px;
+  background-color: #f0f0f5;
+}
+
+.inputRegister input:focus{ 
+  border:none;	
+  outline:none;
+  border-bottom:1px solid #8E3FC6;	
+ }
+
+.text-centerRegister{
+	color:rgba(30, 108, 217, 0.8);	
+	text-transform:uppercase;
+	font-size: 52px;
+	margin: -50px 0 80px 0;
+	display: block;
+	text-align: center;
+	font-weight: bold;	
+}
+
+.btnRegister{
+  display: block;
+	color: rgba(30, 108, 217, 0.8);
+	background-color:rgba(76, 216, 255, 0.8);
+	outline: none;
+  border: 0;
+  color: #F7FAF7;
+	padding:0px 20px;
+	text-transform:uppercase;
+  margin-top:10px;
+  margin-left: 150px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+	width: 60%;
+	transition-duration: 0.4s;
+	height: 44px;
+}
+
+
+.btnRegister:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.inputRegister input:focus ~ label,
+.inputRegister input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+}
+
