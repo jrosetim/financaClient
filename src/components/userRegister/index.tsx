@@ -1,15 +1,37 @@
-import React, {EventHandler, FormEvent} from 'react';
-import {Link} from 'react-router-dom'
+import React, {EventHandler, FormEvent, useState, ChangeEvent} from 'react';
+import {Link, useHistory} from 'react-router-dom'
+import api from '../../services/api'
+
 import './styles.css'
 
 const UserRegister: React.FC  = () => {
+  const history = useHistory();
 
-  const handleRegister = (event: FormEvent) => {
+  const [dataResgister, setDataRegister] = useState({
+    username: '',
+    useremail: '',
+    userpassword: '',
+    usertelefone: ''
+  });
+
+  const handleRegister = async (event: FormEvent) => {
     event.preventDefault();
+
+    await  api.post('/users', dataResgister );
+
+    alert('Cadastrado com sucesso!');
+
+    history.push('/login');
   }
 
   const handleCancel = (event: FormEvent) => {
     event.preventDefault();
+  }
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>{
+    const {name, value} = event.target
+
+    setDataRegister({...dataResgister, [name]: value});
   }
 
   return (
@@ -21,27 +43,27 @@ const UserRegister: React.FC  = () => {
 
         <div className="boxFieldsRegister">
           <label>Nome</label>
-          <input placeholder="Nome completo" type="text"></input>  
+          <input name="username" onChange={handleInputChange} placeholder="Nome completo" type="text"></input>  
         </div> 
 
         <div className="boxFieldsRegister">
           <label>E-mail</label>
-          <input placeholder="E-mail" type="text"></input>  
+          <input name="useremail" onChange={handleInputChange} placeholder="E-mail" type="text"></input>  
         </div> 
 
         <div className="boxFieldsRegister">
           <label>Senha</label>
-          <input placeholder="Senha" type="text"></input>  
+          <input name="userpassword" onChange={handleInputChange} placeholder="Senha" type="password"></input>  
         </div> 
 
         <div className="boxFieldsRegister">
           <label>Confirmar Senha</label>
-          <input placeholder="Confirmar senha" type="text"></input>  
+          <input placeholder="Confirmar senha" type="password"></input>  
         </div> 
 
         <div className="boxFieldsRegister">
           <label>Telefone</label>
-          <input placeholder="Telefone" type="text"></input>  
+          <input name="usertelefone" onChange={handleInputChange} placeholder="Telefone" type="text"></input>  
         </div> 
 
         <div className="buttonsRegister">

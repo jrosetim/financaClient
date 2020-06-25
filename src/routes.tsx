@@ -3,6 +3,7 @@ import {Route, BrowserRouter, Switch, Redirect} from 'react-router-dom';
 import Home from './components/home'
 import Login from './components/login'
 import UserRegister from './components/userRegister'
+import UserPage from './components/userPage'
 import { isAuthenticated } from './auth/auth'
 
 const PrivateReoute = ( { component: Component, ...rest } : any & {Component:any} ) => (
@@ -25,6 +26,7 @@ const Routes = () =>{
         <Route component={Login} path="/login" />  
         <Route component={UserRegister} path="/register" />  
         <PrivateReoute component={() => <h1>Autenticado</h1>}  path="/app"/>  
+        <PrivateReoute component={UserPage}  path="/userpage"/>  
       </Switch>
     </BrowserRouter>
   );

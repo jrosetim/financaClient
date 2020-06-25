@@ -2,6 +2,7 @@ import React, {useState, ChangeEvent, FormEvent}  from 'react'
 import {FiLogIn} from 'react-icons/fi';
 import {Link} from 'react-router-dom';
 import api from '../../services/api';
+import {isAuthenticated} from '../../auth/auth'
 
 import './styles.css';
 
@@ -15,25 +16,28 @@ const Login: React.FC = () => {
   const [userPassword, setUserPassword] = useState<String>('');
   const [userDataApi, setUserDataApi] = useState<userData>();
 
-  const handleSubmitLogin = (event : FormEvent) => {
+  const handleSubmitLogin = async (event : FormEvent) => {
     event.preventDefault();
 
-    api.get(`/users/${userEmail}`)
+    await api.get(`/users/${userEmail}`)
       .then((resolve) => {
         setUserDataApi(resolve.data);    
 
         validLogin(resolve.data.useremail, resolve.data.userpassword);
       });
+
+      console.log(localStorage.getItem('success'));
   };
 
   const validLogin = (userEmailParam: String, userPasswordParam: String) => {    
     if (userDataApi) {
-      //console.log({userEmail, dataApiEmail: userDataApi?.useremail, userPassword, userDataApiPassword: userDataApi?.userpassword});
       if (userEmail === userEmailParam && userPassword === userPasswordParam){
+        localStorage.setItem('success', 'true');
         return console.log(`Seja bem vindo ${userDataApi?.useremail}`);
       }
-
-      return console.log("Usuรกrio ou senha incorretos");
+      
+      localStorage.setItem('success', '');
+      return console.log("Usuário ou senha incorretos");
     }
   }
 
@@ -60,6 +64,8 @@ const Login: React.FC = () => {
 
         <div className="actionsButtons">
           <button type="submit" className="btn">Entrar</button> 
+          
+          <Link to="userpage" />
 
           <Link to='/'>
             <button type="submit" className="btn">Sair</button> 
