@@ -15,29 +15,40 @@ const UserRegister: React.FC  = () => {
   return (
     <div className="boxRegister">
       <form action="submit" className="formRegister">
-        <div className="divInputsRegister">
-          <span className="text-centerRegister">Faça seu cadastro</span>
-          <label className="labelRegister">
-            E-mail
-            <input className="inputRegister" placeholder="E-mail" type="text"></input>  
-          </label>
-          
+        <div className="divTextCenterRegister">
+          <span>Faça seu cadastro</span>
+        </div>
 
-          <label className="labelRegister">
-            Senha
-            <input className="inputRegister" placeholder="Senha" type="password"></input>  
-          </label>
-          
-          <label className="labelRegister">
-            Telefone
-            <input className="inputRegister" placeholder="Telefone" type="text"></input>
-          </label>
-          
+        <div className="boxFieldsRegister">
+          <label>Nome</label>
+          <input placeholder="Nome completo" type="text"></input>  
+        </div> 
 
-          <button className="btnRegister" onClick={handleRegister}>Cadastrar</button>
+        <div className="boxFieldsRegister">
+          <label>E-mail</label>
+          <input placeholder="E-mail" type="text"></input>  
+        </div> 
+
+        <div className="boxFieldsRegister">
+          <label>Senha</label>
+          <input placeholder="Senha" type="text"></input>  
+        </div> 
+
+        <div className="boxFieldsRegister">
+          <label>Confirmar Senha</label>
+          <input placeholder="Confirmar senha" type="text"></input>  
+        </div> 
+
+        <div className="boxFieldsRegister">
+          <label>Telefone</label>
+          <input placeholder="Telefone" type="text"></input>  
+        </div> 
+
+        <div className="buttonsRegister">
+          <button onClick={handleRegister}>Cadastrar</button>
           
           <Link to="/">
-            <button className="btnRegister" type="submit" >Cancelar</button>
+            <button type="submit" >Cancelar</button>
           </Link>
         </div>
       </form>
