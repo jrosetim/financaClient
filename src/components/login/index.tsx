@@ -1,8 +1,7 @@
 import React, {useState, ChangeEvent, FormEvent}  from 'react'
 import {FiLogIn} from 'react-icons/fi';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
-import {isAuthenticated} from '../../auth/auth'
 
 import './styles.css';
 
@@ -16,6 +15,8 @@ const Login: React.FC = () => {
   const [userPassword, setUserPassword] = useState<String>('');
   const [userDataApi, setUserDataApi] = useState<userData>();
 
+  const history = useHistory();
+
   const handleSubmitLogin = async (event : FormEvent) => {
     event.preventDefault();
 
@@ -23,23 +24,16 @@ const Login: React.FC = () => {
       .then((resolve) => {
         setUserDataApi(resolve.data);    
 
-        validLogin(resolve.data.useremail, resolve.data.userpassword);
+        if (userEmail === resolve.data.useremail && userPassword === resolve.data.userpassword){
+          localStorage.setItem('token', 'true');
+          history.push('/userpage');
+  
+          return console.log(`Seja bem vindo ${resolve.data.useremail}`);
+        }
+
+        return alert('Usuário ou senha invalidos');
       });
-
-      console.log(localStorage.getItem('success'));
   };
-
-  const validLogin = (userEmailParam: String, userPasswordParam: String) => {    
-    if (userDataApi) {
-      if (userEmail === userEmailParam && userPassword === userPasswordParam){
-        localStorage.setItem('success', 'true');
-        return console.log(`Seja bem vindo ${userDataApi?.useremail}`);
-      }
-      
-      localStorage.setItem('success', '');
-      return console.log("Usuário ou senha incorretos");
-    }
-  }
 
   function setEmail(event : ChangeEvent<HTMLInputElement>){
     setUserEmail(event.target.value);
@@ -64,8 +58,6 @@ const Login: React.FC = () => {
 
         <div className="actionsButtons">
           <button type="submit" className="btn">Entrar</button> 
-          
-          <Link to="userpage" />
 
           <Link to='/'>
             <button type="submit" className="btn">Sair</button> 

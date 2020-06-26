@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import './styles.css';
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    localStorage.setItem('successs', '');
+  }, []);
+
   return( 
     <header className="header">
       <div className="brand-box">
