@@ -49,7 +49,7 @@ const Login: React.FC = () => {
         <span className="text-center">login</span>
         <div className="input-container">
           <input onChange={setEmail} type="text" />
-          <label>Usuário</label>        
+          <label>Usuรกrio</label>        
         </div>
         <div className="input-container">        
           <input onChange={setPassword} type="password" />

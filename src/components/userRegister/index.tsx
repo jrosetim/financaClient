@@ -35,46 +35,37 @@ const UserRegister: React.FC  = () => {
   }
 
   return (
-    <div className="boxRegister">
-      <form action="submit" className="formRegister">
-        <div className="divTextCenterRegister">
-          <span>Faça seu cadastro</span>
-        </div>
+    <form action="/action_page">
+      <div className="container">
+      <h1>Registro</h1>
+        <p>Preencha os campos para criar uma nova conta.</p>
 
-        <div className="boxFieldsRegister">
-          <label>Nome</label>
-          <input name="username" onChange={handleInputChange} placeholder="Nome completo" type="text"></input>  
-        </div> 
+        <label ><b>Nome</b></label>
+        <input onChange={handleInputChange} type="text" placeholder="Nome completo" name="username" id="email" required />
 
-        <div className="boxFieldsRegister">
-          <label>E-mail</label>
-          <input name="useremail" onChange={handleInputChange} placeholder="E-mail" type="text"></input>  
-        </div> 
 
-        <div className="boxFieldsRegister">
-          <label>Senha</label>
-          <input name="userpassword" onChange={handleInputChange} placeholder="Senha" type="password"></input>  
-        </div> 
+        <label ><b>Email</b></label>
+        <input onChange={handleInputChange} type="text" placeholder="E-mail" name="useremail" required />
 
-        <div className="boxFieldsRegister">
-          <label>Confirmar Senha</label>
-          <input placeholder="Confirmar senha" type="password"></input>  
-        </div> 
+        <label ><b>Senha</b></label>
+        <input onChange={handleInputChange} type="password" placeholder="Senha" name="userpassword" required />
 
-        <div className="boxFieldsRegister">
-          <label>Telefone</label>
-          <input name="usertelefone" onChange={handleInputChange} placeholder="Telefone" type="text"></input>  
-        </div> 
+        <label ><b>Confirma senha</b></label>
+        <input type="password" placeholder="Confirme a senha" name="psw-repeat" required />
 
-        <div className="buttonsRegister">
-          <button onClick={handleRegister}>Cadastrar</button>
-          
-          <Link to="/">
-            <button type="submit" >Cancelar</button>
-          </Link>
-        </div>
-      </form>
-    </div>
+        <label ><b>Telefone</b></label>
+        <input type="text" placeholder="Informe o telefone" name="usertelefone" required />
+
+
+        {/* <p>By creating an account you agree to our <a href="#">Terms  Privacy</a>.</p> */}
+
+        <button onClick={handleRegister} type="submit" className="registerbtn">Cadastrar</button>
+      </div>
+      
+      <div className="container signin">
+        <p>Já tem uma conta? <a href="/login">Entrar</a>.</p>
+      </div>
+    </form>    
   ) 
 }
 

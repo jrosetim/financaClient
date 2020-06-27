@@ -1,83 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,400i,700,700i&subset=greek-ext');
-
-body{
-	min-height:100vh;
-	font-family: 'Ubuntu', sans-serif;
-	background-color: #F7FAF7;
+* {
+  box-sizing: border-box;
 }
 
-.boxRegister{
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-	height: 400px;
-	width: 800px;
-
-	margin-right: auto;
-	margin-left: auto;
-	margin-top: 90px;
-
-	border: 2px;
-	border-color: rgba(30, 108, 217, 0.8);
-	border-style: solid;
-	box-sizing: border-box;
-
-	color: rgba(30, 108, 217, 0.8);
+/* Add padding to containers */
+.container {
+  padding: 16px;
+  background-color: white;
 }
 
-.divTextCenterRegister{
-	text-align: center;
-	width: 100%;
-	font-size: 50px;
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
 }
 
-.boxFieldsRegister{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-direction: row;
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
 }
 
-.boxFieldsRegister input{
-	padding: 5px;
-	width: 500px;
-	height: 35px;
-	margin-left: 10px;
-	border: 0px;
-	margin-top: 5px;
+/* Overwrite default styles of hr */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
 }
 
-.boxFieldsRegister input:focus{ 
-	border:none;	
-	outline:none;
- }
-
-
-.inputRegister{
-	height: 35px;
-	width: 200px;
+/* Set a style for the submit button */
+.registerbtn {
+  background-color: rgba(30, 108, 217, 0.8);
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
 }
 
-.inputRegister input{
-	height: 35px;
-	border: 0px;
+.registerbtn:hover {
+  opacity: 1;
 }
 
-.buttonsRegister {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: row;
+/* Add a blue text color to links */
+a {
+  color: rgba(30, 108, 217, 0.8);
 }
 
-
-.buttonsRegister button{
-	margin-top: 10px;
-	height: 35px;
-	width: 200px;
-	margin-left: 5px;
-	background-color: rgba(76, 216, 255, 0.8);
-	border: none;
-	color: rgba(30, 108, 217, 0.8);
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
 }
-
