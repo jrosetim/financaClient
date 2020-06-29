@@ -153,7 +153,7 @@ body {
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width:120px;
+  width:180px;
 }
 
 .topnav input[type=password] {
@@ -161,7 +161,7 @@ body {
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width:120px;
+  width:180px;
 }
 
 .topnav .login-container button {

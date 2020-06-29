@@ -1,5 +1,5 @@
-import React, {EventHandler, FormEvent, useState, ChangeEvent} from 'react';
-import {Link, useHistory} from 'react-router-dom'
+import React, {FormEvent, useState, ChangeEvent} from 'react';
+import {useHistory} from 'react-router-dom'
 import api from '../../services/api'
 
 import './styles.css'

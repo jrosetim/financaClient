@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
+import cep from 'cep-promise';
 
 import './styles.css'
 
 const ComponentTest : React.FC = () => {
+
+  const consultaCep = (event: ChangeEvent<HTMLInputElement> ) =>{
+    cep( event.target.value )
+    .then( (resolve) =>{
+      console.log(resolve);
+    });
+  }
 
   return (
 
@@ -11,8 +19,8 @@ const ComponentTest : React.FC = () => {
       <h1>Registro</h1>
         <p>Preencha os campos para criar uma nova conta.</p>
 
-        <label ><b>Nome</b></label>
-        <input type="text" placeholder="Nome completo" name="username" id="email" required />
+        <label ><b>CEP</b></label>
+        <input onChange={consultaCep} type="text" placeholder="Cep" name="cep" id="cep" required />
 
 
         <label ><b>Email</b></label>
@@ -30,7 +38,7 @@ const ComponentTest : React.FC = () => {
       </div>
       
       <div className="container signin">
-        <p>Já tem uma conta? <a href="#">Entrar</a>.</p>
+        <p>Jรก tem uma conta? <a href="#">Entrar</a>.</p>
       </div>
     </form>    
 

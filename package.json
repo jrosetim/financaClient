@@ -11,6 +11,7 @@
     "@types/react-router-dom": "^5.1.5",
     "axios": "^0.19.2",
     "browserlist": "^1.0.1",
+    "cep-promise": "^3.0.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.10.0",
