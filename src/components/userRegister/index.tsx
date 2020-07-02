@@ -1,11 +1,13 @@
-import React, {FormEvent, useState, ChangeEvent} from 'react';
+import React, {FormEvent, useState, ChangeEvent, useContext} from 'react';
 import {useHistory} from 'react-router-dom'
 import api from '../../services/api'
+import AuthContext from '../context/authContext'
 
 import './styles.css'
 
 const UserRegister: React.FC  = () => {
   const history = useHistory();
+  const {personData} = useContext(AuthContext);
 
   const [dataResgister, setDataRegister] = useState({
     username: '',
@@ -42,7 +44,6 @@ const UserRegister: React.FC  = () => {
 
         <label ><b>Nome</b></label>
         <input onChange={handleInputChange} type="text" placeholder="Nome completo" name="username" id="email" required />
-
 
         <label ><b>Email</b></label>
         <input onChange={handleInputChange} type="text" placeholder="E-mail" name="useremail" required />

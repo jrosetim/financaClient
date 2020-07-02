@@ -1,7 +1,8 @@
-import React, {useState, ChangeEvent, FormEvent}  from 'react'
+import React, {useState, ChangeEvent, FormEvent, useContext}  from 'react'
 import {FiLogIn} from 'react-icons/fi';
 import {Link, useHistory} from 'react-router-dom';
 import api from '../../services/api';
+import AuthContext from '../context/authContext'
 
 import './styles.css';
 
@@ -11,28 +12,40 @@ interface userData{
 }
 
 const Login: React.FC = () => {
-  const [userEmail, setUserEmail] = useState<String>('');
-  const [userPassword, setUserPassword] = useState<String>('');
+  const [userEmail, setUserEmail] = useState<string>('');
+  const [userPassword, setUserPassword] = useState<string>('');
   const [userDataApi, setUserDataApi] = useState<userData>();
+  const authContex = useContext(AuthContext);
 
   const history = useHistory();
 
-  const handleSubmitLogin = async (event : FormEvent) => {
+  const handleSubmitLogin = (event : FormEvent) => {
     event.preventDefault();
 
-    await api.get(`/users/${userEmail}`)
-      .then((resolve) => {
-        setUserDataApi(resolve.data);    
+    console.debug('handleSubmitLogin', userEmail,  userPassword);
+    authContex.login(userEmail, userPassword);
 
-        if (userEmail === resolve.data.useremail && userPassword === resolve.data.userpassword){
-          localStorage.setItem('token', 'true');
-          history.push('/userpage');
+    if (authContex.logged){
+      history.push('/userpage');
   
-          return console.log(`Seja bem vindo ${resolve.data.useremail}`);
-        }
+      console.log(`Seja bem vindo ${userEmail}`);
+    }else{
+      alert('Usuário ou senha invalidos');      
+    }
 
-        return alert('Usuário ou senha invalidos');
-      });
+    // await api.get(`/users/${userEmail}`)
+    //   .then((resolve) => {
+    //     setUserDataApi(resolve.data);    
+
+    //     if (userEmail === resolve.data.useremail && userPassword === resolve.data.userpassword){
+    //       localStorage.setItem('token', 'true');
+    //       history.push('/userpage');
+  
+    //       return console.log(`Seja bem vindo ${resolve.data.useremail}`);
+    //     }
+
+    //     return alert('Usuário ou senha invalidos');
+    //   });
   };
 
   function setEmail(event : ChangeEvent<HTMLInputElement>){
@@ -49,7 +62,7 @@ const Login: React.FC = () => {
         <span className="text-center">login</span>
         <div className="input-container">
           <input onChange={setEmail} type="text" />
-          <label>Usuรกrio</label>        
+          <label>Usuà¸£à¸�rio</label>        
         </div>
         <div className="input-container">        
           <input onChange={setPassword} type="password" />

@@ -1,6 +1,7 @@
-import React, {useEffect, FormEvent, useState, ChangeEvent} from 'react';
+import React, {useEffect, FormEvent, useState, ChangeEvent, useContext} from 'react';
 import {Link, useHistory} from 'react-router-dom'
 import api  from '../../services/api'
+import AuthContext from '../context/authContext'
 
 import './styles.css';
 
@@ -10,32 +11,24 @@ interface userData{
 }
 
 const Home: React.FC = () => {
-  const [userEmail, setUserEmail] = useState<String>('');
-  const [userPassword, setUserPassword] = useState<String>('');
+  const [userEmail, setUserEmail] = useState<string>('');
+  const [userPassword, setUserPassword] = useState<string>('');
   const [userDataApi, setUserDataApi] = useState<userData>();
-  
+  const {login, logged, userData} = useContext(AuthContext);
+
   const history = useHistory();
 
-  useEffect(() => {
-    localStorage.setItem('token', '');
-  }, []);
-
+  useEffect( () => {
+    if (logged){
+      history.push('/userpage');
+    }
+  } ,[logged])
+  
   const handleSubmitLogin = async (event : FormEvent) => {
     event.preventDefault();
 
-    await api.get(`/users/${userEmail}`)
-      .then((resolve) => {
-        setUserDataApi(resolve.data);    
-
-        if (userEmail === resolve.data.useremail && userPassword === resolve.data.userpassword){
-          localStorage.setItem('token', 'true');
-          history.push('/userpage');
-  
-          return console.log(`Seja bem vindo ${resolve.data.useremail}`);
-        }
-
-        return alert('Usuário ou senha inválidos');
-      });
+    //await login(userEmail, userPassword);
+    await login('jrosetim@gmail.com', '123');
   };
 
   function setEmail(event : ChangeEvent<HTMLInputElement>){

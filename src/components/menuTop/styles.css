@@ -57,3 +57,11 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.userName {
+  display: flex;  
+  margin-top: 10px;
+  margin-left: 50%;
+  color: white;
+  align-items: flex-end;
+}
