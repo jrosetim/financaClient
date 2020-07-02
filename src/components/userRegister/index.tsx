@@ -64,7 +64,7 @@ const UserRegister: React.FC  = () => {
       </div>
       
       <div className="container signin">
-        <p>Já tem uma conta? <a href="/login">Entrar</a>.</p>
+        <p>Já tem uma conta? <a href="/">Entrar</a>.</p>
       </div>
     </form>    
   ) 

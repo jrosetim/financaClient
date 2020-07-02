@@ -39,6 +39,10 @@ const Home: React.FC = () => {
     setUserPassword(event.target.value);
   }  
 
+  const HandleClickRegister = () => {
+    history.push('/register');
+  }
+
   return( 
     <div>
       
@@ -46,11 +50,10 @@ const Home: React.FC = () => {
         <form action="submit" onSubmit={handleSubmitLogin}>
           <div className="topnav">
             <div className="login-container">
-              <form action="/action_page">
                 <input onChange={setEmail} type="text" placeholder="E-mail" name="useremail" />
                 <input onChange={setPassword} type="password" placeholder="Senha" name="userpassword" />
-                <button type="submit">Login</button>
-              </form>
+                <button  onClick={HandleClickRegister} type="submit">Cadastrar</button>
+                <button type="button" onClick={handleSubmitLogin}>Login</button>
             </div>
           </div>
         </form>
@@ -61,9 +64,7 @@ const Home: React.FC = () => {
             <span className="heading-primary-main">Seja bem vindo ao FinanCAH</span>
             <span className="heading-primary-sub">Aqui seus sonhos podem se tornar realidade</span>
           </h1>
-          <Link to="/login">
             <a href="#" className="btnSobre btnSobre-white btnSobre-animated">Sobre nós</a>
-          </Link> 
         </div>
       </header>
     </div>
