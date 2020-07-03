@@ -36,33 +36,27 @@ const UserUpdateData: React.FC = () => {
   const {userid} = personData.user;
   const {genderid} = personData.gender;  
   const [gender, setGender] = useState<[IGender]>([ {genderid: -1, description:''}]);
+  const [selectedGender, setSelectedGender] = useState<number>(0);
 
-  const [userAddress, setUserAddress] = useState({
+  //const [userDataLocal, setUserData] = useState<IPerson>({} as IPerson);
+
+  const [userDataLocal, setUserData] = useState({
+    personid: 0,
+    user:{
+      userid:0
+    },
+    cpf: '',
+    rg: '',
+    gender: {
+      genderid: 0,
+    },
+    zipcode: '',
     state: '',
     city: '',
     neighborhood: '',
-    street: ''  
-  })
-
-  // const [userDataLocal, setUserData] = useState({
-  //   personid: -1,
-  //   user:{
-  //     userid:-1
-  //   },
-  //   cpf: '',
-  //   rg: '',
-  //   gender: {
-  //     genderid: -1,
-  //   },
-  //   zipcode: '',
-  //   state: '',
-  //   city: '',
-  //   neighborhood: '',
-  //   street: '',
-  //   addressnumber:''  
-  // });
-
-  const [userDataLocal, setUserData] = useState<IPerson>({} as IPerson);
+    street: '',
+    addressnumber: ''
+  });
 
   useEffect( () => {
     setUserData({
@@ -78,6 +72,8 @@ const UserUpdateData: React.FC = () => {
       street: personData.street,
       addressnumber: personData.addressnumber
     })
+
+    setSelectedGender(genderid);
 
     setInsertData(false);
   }, []);
@@ -101,9 +97,13 @@ const UserUpdateData: React.FC = () => {
   const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) =>{
     const {name, value} = event.target
 
-    console.log(`selectChange ${event.target}`);
+    let handleGender = {};
 
-    setUserData({...userDataLocal, [name]: value});
+    handleGender = {'genderid' : value};
+
+    setSelectedGender( Number(value));
+
+    setUserData({...userDataLocal, [name]: handleGender});
   }
 
   const handleCepKeyDown = async (event: KeyboardEvent) => {
@@ -114,11 +114,7 @@ const UserUpdateData: React.FC = () => {
       await cep(zipcode).then( (resolve) =>{
         const {state, city, neighborhood, street} = resolve;
 
-        setUserAddress({state, city, neighborhood, street})
-
         setUserData({...userDataLocal, state, city, neighborhood, street});
-
-        console.log(userDataLocal);
       })
     }
   }
@@ -126,7 +122,7 @@ const UserUpdateData: React.FC = () => {
   const handleRegister = async (event : FormEvent ) => {
     event.preventDefault();
     setInsertData(true);
-
+    
     if (insertData){
       await api.put(`/person/${userDataLocal.personid}`, userDataLocal, {headers: {'Access-Control-Allow-Origin': '*'}})
       .then( (resolve) => {
@@ -154,25 +150,18 @@ const UserUpdateData: React.FC = () => {
         <label ><b>RG</b></label>
         <input onChange={handleInputChange} type="text" placeholder="RG" name="rg" value={userDataLocal.rg}/>
 
-        {/* <label> <b>Genero</b> </label>
-        <select name="genderid" >
-          <option value="1">Masculino</option>
-          <option value="2">Feminino</option>
-          <option value="3">Outro</option>
-        </select> */}
-
-        <label> <b>Genero</b> </label>
-        <select onChange={handleSelectChange} name="genderid" >
-         {   
-          gender.map( itens => (
-            <option 
-              key={itens.genderid} 
-              value={itens.genderid}
-            >{itens.description}</option>
-           ) )
-          
-         } 
-         </select>
+        <label htmlFor="gender"> <b>Genero</b> </label>
+        <select value={selectedGender} onChange={handleSelectChange} name="gender" id="gender" >
+          <option value="0">Selecione um genero</option>
+          {   
+            gender.map( itens => (
+              <option 
+                key={itens.genderid} 
+                value={itens.genderid}
+              >{itens.description}</option>
+            ))
+          } 
+        </select>
 
         <label ><b>CEP</b></label>
         <input 
@@ -194,7 +183,7 @@ const UserUpdateData: React.FC = () => {
           value={userDataLocal.street} 
         />
 
-        <label ><b>Número</b></label>
+        <label ><b>NÃºmero</b></label>
         <input 
           onChange={handleInputChange} 
           type="text" 
@@ -234,10 +223,6 @@ const UserUpdateData: React.FC = () => {
         <button onClick={handleCancel}  className="updatebtn">Cancelar</button>
         
       </div>
-      
-      {/* <div className="container signin">
-        <p>JÃ¡ tem uma conta? <a href="/login">Entrar</a>.</p>
-      </div> */}
     </form>    
   ) 
 
