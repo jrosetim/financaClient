@@ -8,6 +8,7 @@ import './styles.css'
 const UserRegister: React.FC  = () => {
   const history = useHistory();
   const {personData} = useContext(AuthContext);
+  
 
   const [dataResgister, setDataRegister] = useState({
     username: '',
