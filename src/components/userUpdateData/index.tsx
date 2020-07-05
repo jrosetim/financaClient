@@ -88,6 +88,20 @@ const UserUpdateData: React.FC = () => {
     )();
   } , [] )  
 
+  useEffect(()=>{
+    (
+      async () => { 
+        if (insertData){
+          await api.put(`/person/${userDataLocal.personid}`, userDataLocal, {headers: {'Access-Control-Allow-Origin': '*'}})
+          .then( (resolve) => {
+            getPersonByUser(userid);
+            history.push('/userpage')
+          });
+        }  
+
+    })();
+  }, [insertData])  
+
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>{
     const {name, value} = event.target
 
@@ -123,13 +137,13 @@ const UserUpdateData: React.FC = () => {
     event.preventDefault();
     setInsertData(true);
     
-    if (insertData){
-      await api.put(`/person/${userDataLocal.personid}`, userDataLocal, {headers: {'Access-Control-Allow-Origin': '*'}})
-      .then( (resolve) => {
-        getPersonByUser(userid);
-        history.push('/userpage')
-      });
-    }
+    // if (insertData){
+    //   await api.put(`/person/${userDataLocal.personid}`, userDataLocal, {headers: {'Access-Control-Allow-Origin': '*'}})
+    //   .then( (resolve) => {
+    //     getPersonByUser(userid);
+    //     history.push('/userpage')
+    //   });
+    // }
   }
 
   const handleCancel = (event : FormEvent) =>{
@@ -183,7 +197,7 @@ const UserUpdateData: React.FC = () => {
           value={userDataLocal.street} 
         />
 
-        <label ><b>NÃºmero</b></label>
+        <label ><b>Número</b></label>
         <input 
           onChange={handleInputChange} 
           type="text" 
