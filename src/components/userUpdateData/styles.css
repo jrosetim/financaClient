@@ -1,74 +1,114 @@
-* {
+.containerUserUpdate {
+  /* display: grid; */
   box-sizing: border-box;
+  /* grid-template-columns: 3fr 1fr;
+  grid-template-rows: 10vh 55vh 35vh; */
+  /* background-color: white; */
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-/* Add padding to containers */
-.container-userupdate {
-  padding: 16px;
-  background-color: white;
-}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-select {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-select:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for the submit button */
-.updatebtn {
-  /* display: flex;
-  justify-content: space-between; */
-  background-color: rgba(30, 108, 217, 0.8);
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 48%;
-  opacity: 0.9;
-  margin-left: 5px;
-}
-
-.updatebtn:hover {
-  opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: rgba(30, 108, 217, 0.8);
-}
-
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
+.headerUserUpdate{
   text-align: center;
+  margin-bottom: 10px;
+}
+
+.mainUserUpdate{
+  width: 100vw;
+}
+
+.mainUserUpdate label{
+  display: inline-block;
+  width: 98%;
+  margin-left: 10px;
+  margin-bottom: 2px;
+}
+
+.mainUserUpdate input{
+  width: 98%;
+  height: var(--height-input);
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border: none;
+  background-color: var(--color-background-input);
+  outline: none;
+  padding: 5px;
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;  
+  color: var(--text-color);
+}
+
+.mainUserUpdate select{
+  width: 98%;
+  height: 33px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border: none;
+  background-color: var(--color-background-input);
+  color: var(--text-color);
+  font-family: Ubuntu, Arial, Helvetica, sans-serif; 
+  outline: none;  
+}
+
+.mainUserUpdate .divCpfRg{
+  display: inline-block;
+  width: 50%;
+}
+
+.mainUserUpdate .divCpfRg input{
+  width: 96%;
+}
+
+.mainUserUpdate .divRuaNumero{
+  display: inline-block;
+  width: 50%;
+}
+
+.mainUserUpdate .divRuaNumero input{
+  width: 96%;
+}
+
+.mainUserUpdate .labelUserUpdateRuaNumero{
+  display: inline-block;
+  width: 49%;
+}
+
+.mainUserUpdate .inputUserUpdateRuaNumero{
+  width: 49%;
+  height: 33px;
+}
+
+.footerBtnUserUpdate{
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.footerBtnUserUpdate{
+ width: 100vw;
+ margin-top: 7px;
+}
+
+.footerBtnUserUpdate button{
+  border-radius: 6px;
+  border: none;
+  height: var(--height-input);
+  width: 49%;
+  background-color: var(--color-azul-escuro);
+  color: var(--color-azul-claro);  
+  opacity: 0.9; 
+}
+
+.footerBtnUserUpdate button:hover{
+  opacity: 1; 
+}
+
+.updatebtn{
+  margin-left: 10px;  
+}
+
+.cancelbtn{
+  margin-left: 3px;
+}
+
+.footerBtnUserUpdate button:hover{
+  cursor: pointer;
+  opacity: 1;
 }

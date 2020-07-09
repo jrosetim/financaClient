@@ -1,43 +1,54 @@
 * {
   box-sizing: border-box;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
-/* Add padding to containers */
-.container {
-  padding: 16px;
-  background-color: white;
+.containerRegister {
+  max-width: 100vw;
+  max-height: 100vh;
+  margin-left: 10px;
+  background-color: var(--color-background-page);
 }
 
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
+.headerUserRegister {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.containerRegister input{
+  background-color: var(--color-background-input);
+  color: var(--text-color);
+  height: var(--height-input);
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin: 5px;
   border: none;
-  background: #f1f1f1;
+  font-family: Ubuntu, Arial, Helvetica, sans-serif;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
+.containerRegister input:focus {
+  background-color: var(--color-background-input);
   outline: none;
 }
 
-/* Overwrite default styles of hr */
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+.mainUserRegister label{
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 2px;
+  width: 100%;
 }
 
 /* Set a style for the submit button */
 .registerbtn {
-  background-color: rgba(30, 108, 217, 0.8);
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
+  background-color: var(--color-azul-escuro);
+  color: var(--color-azul-claro);
+  height: var(--height-input);
+  border-radius: 6px;
+  margin: 10px 0 0 6px;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 98%;
   opacity: 0.9;
 }
 
@@ -45,13 +56,34 @@ hr {
   opacity: 1;
 }
 
-/* Add a blue text color to links */
-a {
-  color: rgba(30, 108, 217, 0.8);
+.container-signin{
+  width: 100%;
+  margin-top: 10px;
 }
 
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
+.container-signin p{
+  width: 100%;
   text-align: center;
 }
+
+.container-signin a {
+  color: var(--color-azul-escuro);
+}
+
+.userRegisterPassword{
+  display: inline-block;
+  width: 49%;
+  margin-right: 10px;
+}
+
+.userRegisterPassword label{
+  display: inline-block;
+  width: 100%;
+  margin-right: 10px;
+} 
+
+.userRegisterPassword input{
+  width: 100%;
+  margin-right: 10px;
+} 
+

@@ -1,0 +1,57 @@
+.testContainer{
+  display: grid;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 10vh 80vh 10vh;
+  background-color: blueviolet;
+}
+
+.testHeader{
+  background-color: blue;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  text-align: center;
+}
+
+.testMain{
+  background-color: green;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.testMain label{
+  color: black;
+  display: inline-block;
+  width: 99%;
+  margin: 3px 0 3px 10px;
+}
+
+.testMain input{
+  width: 99%;
+  height: 33px;
+  margin-left: 10px;
+  padding: 5px;
+}
+
+.testMain .labelCpfRg{
+  color: black;
+  display: inline-block; 
+  width: 49%;
+  /* margin: 3px 0 3px 10px; */
+}
+
+.testMain .inputCpfRg{
+  width: 49%;
+  height: 33px;
+  /* margin-left: 10px; */
+  padding: 5px;
+}
+
+.testFooter{
+  background-color: red;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

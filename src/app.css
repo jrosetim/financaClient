@@ -1,7 +1,13 @@
 :root {
   --primary-color: #34CB79;
   --title-color: #322153;
-  --text-color: #6c6c80
+  --text-color: #6c6c80;
+  --color-azul-escuro: rgba(30, 108, 217, 0.8);
+  --color-azul-claro: rgba(76, 216, 255, 0.8);
+  --color-background-page: #f0f0f5;
+  --color-background-input: white;
+  --height-input: 33px;
+  --height-button: 38px;
 }
 
 * {
@@ -10,15 +16,16 @@
   box-sizing: border-box;
 }
 
-body {
-  background: #f0f0f5;
-  -webkit-font-smooothing: antialiased;
+ body {
+  background: var(--color-background-page); 
+  /* -webkit-font-smooothing: antialiased; */
   color: var(--text-color);
-}
+  font-family: 'Ubuntu', sans-serif;
+} 
 
-body, input, button {
+ body, input, button {
   font-family: Robot, Arial, Helvetica, sans-serif;
-}
+} 
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--title-color);

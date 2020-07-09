@@ -51,33 +51,75 @@ const UserRegister: React.FC  = () => {
 
   return (
     <form onSubmit={handleRegister}>
-      <div className="container">
-      <h1>Registro</h1>
-        <p>Preencha os campos para criar uma nova conta.</p>
+      <div className="containerRegister">
+        <header className="headerUserRegister">
+          <h1>Registro</h1>
+          <p>Preencha os campos para criar uma nova conta.</p>
+        </header>
 
-        <label ><b>Nome</b></label>
-        <input onChange={handleInputChange} type="text" placeholder="Nome completo" name="username" id="email" required />
+        <main className="mainUserRegister">
+          <label><b>Nome</b></label>
+          <input 
+            className="inputRegister"
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="Nome completo" 
+            name="username" 
+            id="email" 
+            required 
+          />
 
-        <label ><b>Email</b></label>
-        <input onChange={handleInputChange} type="text" placeholder="E-mail" name="useremail" required />
+          <label ><b>Email</b></label>
+          <input 
+            className="inputRegister"
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="E-mail" 
+            name="useremail" 
+            required 
+          />
 
-        <label ><b>Senha</b></label>
-        <input onChange={handleInputChange} type="password" placeholder="Senha" name="userpassword" required />
-
-        <label ><b>Confirma senha</b></label>
-        <input  onChange={handleInputChange} type="password" placeholder="Confirme a senha" name="passwordrepeat" required />
-
-        <label ><b>Telefone</b></label>
-        <input type="text" placeholder="Informe o telefone" name="usertelefone" required />
-
+          <div className="userRegisterPassword">
+            <label ><b>Senha</b></label>
+            <input 
+              className="inputRegister"
+              onChange={handleInputChange} 
+              type="password" 
+              placeholder="Senha" 
+              name="userpassword" 
+              required 
+            />
+          </div>
+          <div className="userRegisterPassword">
+            <label ><b>Confirma senha</b></label>
+            <input  
+              className="inputRegister"
+              onChange={handleInputChange} 
+              type="password" 
+              placeholder="Confirme a senha" 
+              name="passwordrepeat" 
+              required 
+            />
+          </div>
+          <label ><b>Telefone</b></label>
+          <input 
+            className="inputRegister"
+            type="text" 
+            placeholder="Informe o telefone" 
+            name="usertelefone" 
+            required 
+          />
+        </main>
         {/* <p>By creating an account you agree to our <a href="#">Terms  Privacy</a>.</p> */}
 
         <button type="submit" className="registerbtn">Cadastrar</button>
+
+        <div className="container-signin">
+          <p>Já tem uma conta?<a href="/">Entrar</a>.</p>
+        </div>
       </div>
       
-      <div className="container signin">
-        <p>Já tem uma conta? <a href="/">Entrar</a>.</p>
-      </div>
+
     </form>    
   ) 
 }

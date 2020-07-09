@@ -32,6 +32,7 @@ interface IPerson {
 const UserUpdateData: React.FC = () => {
   const history = useHistory();
   const [insertData, setInsertData] = useState<boolean>(false);
+  // const [cancelRegister, setCancelRegister] = useState<boolean>(false);
   const {personData, userData, getPersonByUser} = useContext(AuthContext);
   const {userid} = personData.user;
   const {genderid} = personData.gender;  
@@ -89,6 +90,7 @@ const UserUpdateData: React.FC = () => {
   } , [] )  
 
   useEffect(()=>{
+    console.log('useEffect');
     (
       async () => { 
         if (insertData){
@@ -101,6 +103,13 @@ const UserUpdateData: React.FC = () => {
 
     })();
   }, [insertData])  
+
+  // useEffect(()=>{
+  //   if (cancelRegister){
+  //     history.push('/userpage');
+  //   }
+  // }, [cancelRegister]);
+
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) =>{
     const {name, value} = event.target
@@ -121,8 +130,9 @@ const UserUpdateData: React.FC = () => {
   }
 
   const handleCepKeyDown = async (event: KeyboardEvent) => {
+    console.log('handleCepKeyDown');
     setInsertData(false);
-    if ((event.key === 'Enter')){
+    if ((event.key === 'Tab') || (event.key === 'Enter')){
       const {zipcode} = userDataLocal;
 
       await cep(zipcode).then( (resolve) =>{
@@ -136,106 +146,119 @@ const UserUpdateData: React.FC = () => {
   const handleRegister = async (event : FormEvent ) => {
     event.preventDefault();
     setInsertData(true);
-    
-    // if (insertData){
-    //   await api.put(`/person/${userDataLocal.personid}`, userDataLocal, {headers: {'Access-Control-Allow-Origin': '*'}})
-    //   .then( (resolve) => {
-    //     getPersonByUser(userid);
-    //     history.push('/userpage')
-    //   });
-    // }
   }
 
-  const handleCancel = (event : FormEvent) =>{
+  const handleCancel = (event : FormEvent) =>{   
     event.preventDefault();
-
     history.push('/userpage');
   }
 
   return (
-    <form onSubmit={handleRegister}>
-      <div className="container-userupdate">
-      <h1>Registro</h1>
-        <p>Preencha os campos para atualizar seu cadastro.</p>
+    <form>
+      <div className="containerUserUpdate">
+        <header className="headerUserUpdate">
+          <h1>Registro</h1>
+          <p>Preencha os campos para atualizar seu cadastro.</p>
+        </header>
 
-        <label ><b>CPF</b></label>
-        <input onChange={handleInputChange} type="text" placeholder="CPF" name="cpf" required value={userDataLocal.cpf} />
+        <main className="mainUserUpdate">
+          <div className="divCpfRg">
+            <label><b>CPF</b></label>         
+            <input 
+              onChange={handleInputChange} 
+              type="text" 
+              placeholder="CPF" 
+              name="cpf" 
+              required 
+              value={userDataLocal.cpf} 
+            />
+          </div>
+          <div className="divCpfRg">
+            <label ><b>RG</b></label>
+            <input 
+              onChange={handleInputChange} 
+              type="text" 
+              placeholder="RG" 
+              name="rg" 
+              value={userDataLocal.rg}
+            />
+          </div>
 
-        <label ><b>RG</b></label>
-        <input onChange={handleInputChange} type="text" placeholder="RG" name="rg" value={userDataLocal.rg}/>
+          <label htmlFor="gender"> <b>Sexo</b> </label>
+          <select value={selectedGender} onChange={handleSelectChange} name="gender" id="gender" >
+            <option value="0">Selecione um genero</option>
+            {   
+              gender.map( itens => (
+                <option 
+                  key={itens.genderid} 
+                  value={itens.genderid}
+                >{itens.description}</option>
+              ))
+            } 
+          </select>
 
-        <label htmlFor="gender"> <b>Genero</b> </label>
-        <select value={selectedGender} onChange={handleSelectChange} name="gender" id="gender" >
-          <option value="0">Selecione um genero</option>
-          {   
-            gender.map( itens => (
-              <option 
-                key={itens.genderid} 
-                value={itens.genderid}
-              >{itens.description}</option>
-            ))
-          } 
-        </select>
+          <label ><b>CEP</b></label>
+          <input 
+            onKeyDown={handleCepKeyDown} 
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="CEP" 
+            name="zipcode" 
+            value={userDataLocal.zipcode}
+          />
 
-        <label ><b>CEP</b></label>
-        <input 
-          onKeyDown={handleCepKeyDown} 
-          onChange={handleInputChange} 
-          type="text" 
-          placeholder="CEP" 
-          name="zipcode" 
-          value={userDataLocal.zipcode}
-        />
+          <div className="divRuaNumero">
+            <label><b>Rua</b></label>
+            <input 
+              onChange={handleInputChange} 
+              type="text" 
+              placeholder="Rua" 
+              name="street" 
+              id="street" 
+              value={userDataLocal.street} 
+            />
+          </div>  
+          <div className="divRuaNumero"> 
+            <label><b>Número</b></label>
+            <input 
+              onChange={handleInputChange} 
+              type="text" 
+              placeholder="Número" 
+              name="addressnumber" 
+              value={userDataLocal.addressnumber}
+            />
+          </div>
+          <label ><b>Bairro</b></label>
+          <input 
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="Bairro" 
+            name="neighborhood" 
+            value={userDataLocal.neighborhood} 
+          />
 
-        <label ><b>Rua</b></label>
-        <input 
-          onChange={handleInputChange} 
-          type="text" 
-          placeholder="Rua" 
-          name="street" 
-          id="street" 
-          value={userDataLocal.street} 
-        />
+          <label ><b>Cidade</b></label>
+          <input 
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="Cidade" 
+            name="city" 
+            value={userDataLocal.city}
+          />
 
-        <label ><b>Número</b></label>
-        <input 
-          onChange={handleInputChange} 
-          type="text" 
-          placeholder="Número" 
-          name="addressnumber" 
-          value={userDataLocal.addressnumber}
-        />
-
-        <label ><b>Bairro</b></label>
-        <input 
-          onChange={handleInputChange} 
-          type="text" 
-          placeholder="Bairro" 
-          name="neighborhood" 
-          value={userDataLocal.neighborhood} 
-        />
-
-        <label ><b>Cidade</b></label>
-        <input 
-          onChange={handleInputChange} 
-          type="text" 
-          placeholder="Cidade" 
-          name="city" 
-          value={userDataLocal.city}
-        />
-
-        <label ><b>Estado</b></label>
-        <input 
-          onChange={handleInputChange} 
-          type="text" 
-          placeholder="Estado" 
-          name="state" 
-          value={userDataLocal.state} 
-        />
-        
-        <button type="submit" className="updatebtn">Atualizar</button>
-        <button onClick={handleCancel}  className="updatebtn">Cancelar</button>
-        
+          <label ><b>Estado</b></label>
+          <input 
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="Estado" 
+            name="state" 
+            value={userDataLocal.state} 
+          />
+        </main>
+        <div className="footerBtnUserUpdate">
+          <button onClick={handleRegister} type="button" className="updatebtn">Atualizar</button>
+          <button onClick={handleCancel} type="button" className="cancelbtn">Cancelar</button>
+        </div>
       </div>
     </form>    
   ) 
