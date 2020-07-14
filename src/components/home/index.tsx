@@ -46,7 +46,7 @@ const Home: React.FC = () => {
   return( 
     <div>
       
-      <header className="header">
+      <header className="headerHome">
         <form action="submit" onSubmit={handleSubmitLogin}>
           <div className="topnav">
             <div className="login-container">
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
             <span className="heading-primary-main">Seja bem vindo ao FinanCAH</span>
             <span className="heading-primary-sub">Aqui seus sonhos podem se tornar realidade</span>
           </h1>
-            <a href="#" className="btnSobre btnSobre-white btnSobre-animated">Sobre nós</a>
+            <a href="#" className="btnSobre">Sobre nós</a>
         </div>
       </header>
     </div>

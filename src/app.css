@@ -16,14 +16,14 @@
   box-sizing: border-box;
 }
 
- body {
+body {
   background: var(--color-background-page); 
   /* -webkit-font-smooothing: antialiased; */
   color: var(--text-color);
   font-family: 'Ubuntu', sans-serif;
 } 
 
- body, input, button {
+input, button {
   font-family: Robot, Arial, Helvetica, sans-serif;
 } 
 

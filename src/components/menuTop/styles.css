@@ -1,6 +1,7 @@
 .navbar {
   overflow: hidden;
-  background-color: rgba(30, 108, 217, 0.8);
+  background-color: var(--color-azul-escuro);
+  text-align: center;
 }
 
 .navbar a {
@@ -24,20 +25,20 @@
   color: white;
   padding: 14px 16px;
   background-color: inherit;
-  font-family: inherit;
+  font-family: inherit; 
   margin: 0;
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-  background-color: rgba(76, 216, 255, 0.8);
+  background-color: var(--color-azul-claro);
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgba(30, 108, 217, 0.8);
+  background-color: var(--color-azul-escuro);
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(30, 108, 217, 0.8);
+  box-shadow: 0px 8px 16px 0px var(--color-azul-escuro);
   z-index: 1;
 }
 
@@ -51,7 +52,7 @@
 }
 
 .dropdown-content a:hover {
-  background-color: rgba(76, 216, 255, 0.8);
+  background-color: var(--color-azul-claro);
 }
 
 .dropdown:hover .dropdown-content {
@@ -59,9 +60,19 @@
 }
 
 .userName {
-  display: flex;  
-  margin-top: 10px;
-  margin-left: 50%;
+  /* display: flex;   */
+  display: inline-block;
+  margin-top: 15px;
   color: white;
-  align-items: flex-end;
+}
+
+.dropDownTestContent{
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  border: none;
+}
+
+.dropDownTest:hover .dropDownTestContent {
+  display: block;
 }

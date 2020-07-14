@@ -26,7 +26,7 @@ const MenuTop: React.FC = () =>{
     <div className="navbar">
       <div className="dropdown">
         <button className="dropbtn">Menu 
-          <i className="fa fa-caret-down"></i>
+          {/* <i></i> */}
         </button>
         <div className="dropdown-content">
           <a onClick={toUserData}>Dados pessoais</a>
@@ -35,7 +35,15 @@ const MenuTop: React.FC = () =>{
         </div>
       </div> 
       <div>
-      <label className="userName"> {userData.username} </label> 
+        <label className="userName"> {userData.username} </label> 
+      </div>
+      <button className="dropDownTest">
+        teste
+      </button>
+      <div className="dropDownTestContent">
+        <a onClick={toUserData}>Dados pessoais</a>
+        <a onClick={toLancamentos}>Lançamento de contas</a>
+        <a onClick={toHome}>Sair</a>
       </div>
     </div>
   );

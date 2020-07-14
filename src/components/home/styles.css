@@ -1,4 +1,4 @@
-.header {
+.headerHome {
   height: 100vh;
   background-image: 
   linear-gradient(to right bottom, 
@@ -53,6 +53,13 @@
   letter-spacing: 7.4px;
 }
 
+.btnSobre {
+  font-size: 30px;
+  width: 300px;
+  background-color: rgba(76, 216, 255, 0.8);
+  color: rgba(30, 108, 217, 0.8);
+}
+
 .btnSobre:link,
 .btnSobre:visited {
   /* text-transform: uppercase; */
@@ -75,17 +82,6 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.btnSobre-white {
-  background-color: #fff;
-  color: #777;
-  font-size: 30px;
-}
-
-.btnSobre {
-  width: 300px;
-  background-color: rgba(76, 216, 255, 0.8);
-  color: rgba(30, 108, 217, 0.8);
-}
 
 .topnav {
   overflow: hidden;
@@ -105,23 +101,18 @@
   float: right;
 }
 
-.topnav input[type=text] {
+.topnav input {
+  height: var(--height-input);
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
   border: none;
-  width:180px;
+  width:200px;
+  margin-right: 2px;
+  outline: none;
 }
 
-.topnav input[type=password] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-  width:180px;
-}
-
-.topnav .login-container button {
+.login-container button {
   float: right;
   padding: 6px;
   margin-top: 8px;
@@ -133,10 +124,13 @@
   cursor: pointer;
   border-radius: 2px;
   width: 100px;
+  outline: none;
+  /* opacity: 0.7; */
 }
 
 
-.topnav .login-container button:hover {
-  background-color: rgba(30, 108, 217, 0.8);
+.login-container button:hover {
+  opacity: 0.7;
+  /* background-color: rgba(30, 108, 217, 0.8); */
 }
 
