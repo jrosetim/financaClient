@@ -33,19 +33,16 @@ const UserUpdateData: React.FC = () => {
   const history = useHistory();
   const [insertData, setInsertData] = useState<boolean>(false);
   // const [cancelRegister, setCancelRegister] = useState<boolean>(false);
-  const {personData, userData, getPersonByUser} = useContext(AuthContext);
-  const {userid} = personData.user;
-  const {genderid} = personData.gender;  
+  const {logged, personData} = useContext(AuthContext);
+  const {genderid} = personData.gender; 
   const [gender, setGender] = useState<[IGender]>([ {genderid: -1, description:''}]);
   const [selectedGender, setSelectedGender] = useState<number>(0);
 
-  //const [userDataLocal, setUserData] = useState<IPerson>({} as IPerson);
-
   const [userDataLocal, setUserData] = useState({
     personid: 0,
-    user:{
-      userid:0
-    },
+    name: '',
+    email: '',
+    password: '',
     cpf: '',
     rg: '',
     gender: {
@@ -58,11 +55,16 @@ const UserUpdateData: React.FC = () => {
     street: '',
     addressnumber: ''
   });
+  
 
   useEffect( () => {
+    console.log('userUpdate2 ' + logged);
+
     setUserData({
       personid: personData.personid,
-      user:{userid},
+      name: personData.name,
+      email: personData.email,
+      password: personData.password,
       cpf: personData.cpf,
       rg: personData.rg,
       gender:{genderid},
@@ -74,12 +76,13 @@ const UserUpdateData: React.FC = () => {
       addressnumber: personData.addressnumber
     })
 
-    setSelectedGender(genderid);
+    // setSelectedGender(genderid);
 
     setInsertData(false);
   }, []);
 
   useEffect( () => {
+    console.log('userUpdate3 ' + logged);
     (
       async () => {
         await api.get('/gender').then( resolve => {
@@ -90,13 +93,14 @@ const UserUpdateData: React.FC = () => {
   } , [] )  
 
   useEffect(()=>{
+    console.log('userUpdate4 ' + logged);
     console.log('useEffect');
     (
       async () => { 
         if (insertData){
           await api.put(`/person/${userDataLocal.personid}`, userDataLocal, {headers: {'Access-Control-Allow-Origin': '*'}})
           .then( (resolve) => {
-            getPersonByUser(userid);
+            //getPersonByUser(userid);
             history.push('/userpage')
           });
         }  
@@ -162,6 +166,33 @@ const UserUpdateData: React.FC = () => {
         </header>
 
         <main className="mainUserUpdate">
+          <label ><b>Nome</b></label>
+          <input 
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="Nome" 
+            name="name" 
+            value={userDataLocal.name} 
+          />
+
+          <label ><b>Email</b></label>
+          <input 
+            onChange={handleInputChange} 
+            type="text" 
+            placeholder="Email" 
+            name="email" 
+            value={userDataLocal.email} 
+          />
+
+          <label ><b>Senha</b></label>
+          <input 
+            onChange={handleInputChange} 
+            type="password" 
+            placeholder="Nome" 
+            name="password" 
+            value={userDataLocal.password} 
+          />
+
           <div className="divCpfRg">
             <label><b>CPF</b></label>         
             <input 

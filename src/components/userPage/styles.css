@@ -1,0 +1,41 @@
+/* * {
+  box-sizing: border-box;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.dashboard {
+  margin: 0;
+  top: 0;
+  height: 80px;
+  width: 100vw;
+  background-color: blue;
+}
+
+.saldoAtual {
+  width: 200px;
+  height: 80px;
+  background-color:var(--color-azul-claro);
+  margin-left: 250px;
+  border-radius: 18px;
+  align-content: center;
+}
+
+.saldoAtual label{
+  color: black;
+  margin: 0 auto;
+}
+
+.saldoAtual label:hover{
+  color: black;
+  cursor: pointer; 
+} */
+
+* {
+  box-sizing: border-box;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+.userPage {
+  height: 100vh;
+  width: 100vw;
+}

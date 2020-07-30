@@ -44,7 +44,7 @@ const Login: React.FC = () => {
     //       return console.log(`Seja bem vindo ${resolve.data.useremail}`);
     //     }
 
-    //     return alert('Usuário ou senha invalidos');
+    //     return alert('Usuรกrio ou senha invalidos');
     //   });
   };
 
@@ -62,7 +62,7 @@ const Login: React.FC = () => {
         <span className="text-center">login</span>
         <div className="input-container">
           <input onChange={setEmail} type="text" />
-          <label>Usuà¸£à¸�rio</label>        
+          <label>Usuรกrio</label>        
         </div>
         <div className="input-container">        
           <input onChange={setPassword} type="password" />

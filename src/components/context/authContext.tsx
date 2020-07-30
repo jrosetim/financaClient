@@ -1,30 +1,21 @@
-import React, {createContext, useState, useContext, useEffect} from 'react';
+import React, {createContext, useState} from 'react';
 import api from '../../services/api';
 
 interface AuthContextData {
   logged: boolean;
   token: string;
-  userData: UserData;
   login(userEmail: string, password: string): Promise<void>;
   personData: PersonData;
-  getPersonByUser(useridParam : number): Promise<void>
-}
-
-interface UserData {
-  userid: number;
-  username: string;
-  useremail: string;
-  userpassword: string;
-  userstatus: string;
-  usertype: string;  
 }
 
 interface PersonData {
   personid: number;
+  name: string;
+  email: string;
+  password: string;
   cpf: string;
   rg: string;
   gender:{ genderid: number}
-  user:{userid: number}  
   street: string;
   neighborhood: string;
   zipcode: string;
@@ -41,22 +32,54 @@ interface PersonData {
 const AuthContext =  createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({children}) =>{
+  const [isLogged, setIsLogged] = useState<boolean>(false);
   const [token, setToken] = useState<string>('');
-  const [user, setUser] = useState<UserData>({} as UserData);
   const [person, setPerson] = useState<PersonData>({} as PersonData);
   
   async function login(userEmail: string, password: string){
-    try {
-      const response = await api.get(`/users/${userEmail}`);
 
-      if (userEmail === response.data.useremail && password === response.data.userpassword){
+    try {
+      const response = await api.get(`/person/${userEmail}`);
+
+      if (userEmail === response.data.email && password === response.data.password){
         setToken('true');
-        const {userid, username,useremail,userpassword,userstatus,usertype} = response.data;
+        setIsLogged(true);
+
+        const {
+          personid,
+          name,
+          email,
+          password,
+          cpf, 
+          rg,
+          gender,
+          street,
+          neighborhood,
+          zipcode,
+          city,
+          state,
+          addressnumber,
+          personstate  
+        } = response.data;
         
-        setUser({userid, username, useremail, userpassword, userstatus, usertype})
-        
-        await getPersonByUser(response.data.userid);
+        setPerson({
+          personid,
+          name,
+          email,
+          password,
+          cpf, 
+          rg,
+          gender,
+          street,
+          neighborhood,
+          zipcode,
+          city,
+          state,
+          addressnumber,
+          personstate  
+        })
       }else{
+        setIsLogged(false);
         setToken('');
       }      
     } catch (error) {
@@ -64,55 +87,14 @@ export const AuthProvider: React.FC = ({children}) =>{
     }
   }
 
-  async function getPersonByUser(useridParam : number) {
-    try {
-      const response = await api.get(`/person/${useridParam}`);
-
-      const {
-        personid, 
-        cpf, 
-        rg, 
-        gender, 
-        user,
-        street, 
-        neighborhood, 
-        zipcode, 
-        city, 
-        state, 
-        addressnumber, 
-        personstate 
-      } = response.data;
-
-      setPerson({
-        personid, 
-        cpf, 
-        rg,  
-        gender,
-        user,
-        street, 
-        neighborhood, 
-        zipcode, 
-        city, 
-        state, 
-        addressnumber, 
-        personstate 
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
     <AuthContext.Provider value={
-      {logged: !!token, 
+      {logged: isLogged, 
        token: '', 
-       userData: user, 
        login, 
-       personData: person,
-       getPersonByUser
+       personData: person
       }
     }>
-
       {children}
     </AuthContext.Provider> 
   )

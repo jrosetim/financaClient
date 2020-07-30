@@ -7,7 +7,7 @@ import './styles.css'
 
 const UserRegister: React.FC  = () => {
   const history = useHistory();
-  const {personData} = useContext(AuthContext);
+  // const {personData} = useContext(AuthContext);
   const [insertData, setInsertData] = useState<boolean>(false);
   
   const [dataResgister, setDataRegister] = useState({
