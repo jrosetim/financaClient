@@ -1,0 +1,77 @@
+.ulMenu {
+  position: absolute;
+  background-color: var(--color-azul-escuro);
+  /* width: 60px;
+  height: 60px; */
+  color: white;
+  list-style-type: none;
+  /* border-radius: 50%; */
+
+  width: 230px;
+  height: 100vh;
+}
+
+.ulMenu li{
+  /* padding: 15px; */
+}
+
+.itensMenu {
+  /* position: absolute; */
+  text-decoration: none;
+  /* width: 100%; */
+  /* color: white; */
+  /* display: none; descomentar*/ 
+}
+
+.itensMenu li {
+  text-decoration: none;
+  /* padding: 10px 10px 10px 0; */
+  list-style-type: none;
+}
+
+.itensMenu li:hover {
+  text-decoration: none;
+  /* padding: 10px 10px 10px 0; */
+  /* background-color: var(--color-azul-claro); */
+}
+
+/* .itensMenu  a{
+  text-decoration: none;
+  color: white;
+} */
+
+.ulMenu:hover{
+  width: 230px;
+  height: 100vh;
+  border-radius: 0%;
+  /* background-color: aqua; */
+}
+
+.ulMenu:hover .itensMenu{
+  display: block;
+  /* width: 250px; */
+}
+
+.btnMenuLeft {
+  width: 230px ;
+  height: 100px;
+  border: none;
+  /* overflow: hidden; */
+  cursor: pointer;
+  /* white-space: nowrap; */
+  /* text-decoration: none; */
+  margin-top: 3px;
+  background-color: var(--color-azul-escuro);
+  color: white;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.btnMenuLeft:hover {
+  background-color: var(--color-azul-claro);
+}
+
+.liMenuItem {
+  align-items: center;
+  align-content: center;
+}

@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
-import {Route, BrowserRouter, Switch, Redirect, Router} from 'react-router-dom';
+import React from 'react';
+import {Route, BrowserRouter, Switch} from 'react-router-dom';
 import Home from './components/home'
 import Login from './components/login'
 import UserRegister from './components/userRegister'
 import UserPage from './components/userPage'
 import UserUpdateData from './components/userUpdateData'
 import ComponentTest from './components/componentTest'
-import { isAuthenticated } from './auth/auth'
 import PrivateRoute from '../src/components/privateRoute/privateRoute'
-import {history} from '../src/components/history/history';
-
+import GroupExpense from './components/gropexpense';
 
 // const PrivateRoute = ( { component: Component, ...rest } : any & {Component:any} ) => (
 //   <Route  
@@ -28,14 +26,17 @@ const Routes = () =>{
     <BrowserRouter>
       <Switch>
         <Route component={Home} path="/" exact /> 
-        <Route component={Login} path="/login" />  
-        <Route component={UserRegister} path="/register" />  
-        <Route component={() => (<h1> Autenticado </h1> )} path="/autentidaco" />  
-        <Route component={() => (<h1> Falha na Autenticação </h1> )} path="/falha" />  
-        <PrivateRoute component={() => <h1>Autenticado</h1>}  path="/app"/>  
-        <PrivateRoute component={UserPage}  path="/userpage"/>  
-        <PrivateRoute component={UserUpdateData}  path="/userdata"/>  
-        <Route component={ComponentTest} path="/test" />  
+        <Route component={Login} path="/login"  exact/>  
+        <Route component={UserRegister} path="/register"  exact/>  
+        
+        <PrivateRoute component={() => <h1>Autenticado</h1>}  path="/app" exact/>  
+        <PrivateRoute component={UserPage}  path="/userpage" exact/>  
+        <PrivateRoute component={UserUpdateData}  path="/userupdatedata" exact/>  
+        <PrivateRoute component={GroupExpense} path="/groupexpense" exact/>
+
+        <Route component={ComponentTest} path="/test" exact/>  
+        <Route component={() => (<h1> Autenticado </h1> )} path="/autentidaco" exact/>  
+        <Route component={() => (<h1> Falha na Autenticão </h1> )} path="/falha" exact/>  
       </Switch>
     </BrowserRouter>
   );

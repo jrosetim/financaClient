@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   const [userEmail, setUserEmail] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
   const [userDataApi, setUserDataApi] = useState<userData>();
-  const {login, logged, userData} = useContext(AuthContext);
+  const {login, logged} = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -23,7 +23,7 @@ const Home: React.FC = () => {
       history.push('/userpage');
     }
   } ,[logged])
-  
+   
   const handleSubmitLogin = async (event : FormEvent) => {
     event.preventDefault();
 
