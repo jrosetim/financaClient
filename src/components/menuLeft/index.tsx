@@ -1,10 +1,7 @@
 import React, {useContext, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {FiUser, FiDollarSign, FiLogOut, FiMenu} from 'react-icons/fi';
-import {Dropdown} from 'react-bootstrap'
+import {FiPlus, FiDollarSign, FiLogOut, FiMenu} from 'react-icons/fi';
 import AuthContext from '../context/authContext';
-
-
 import './styles.css';
 
 const MenuLeft : React.FC = () => {
@@ -23,10 +20,20 @@ const MenuLeft : React.FC = () => {
     history.push('/userupdatedata') ;
  }
 
-
   return (
     <div>
-      <ul className="ulMenu">
+
+      <button className="buttonMenuLeft"><FiMenu size="30px"/>
+
+        <ul className="ulMenuLeft" >
+          <li className="liMenuLeft">
+            <div className="itemMenuLeft">
+              <label >Atualização cadastral</label>              
+            </div>
+          </li>         
+        </ul>
+      </button>
+      {/* <ul className="ulMenu">
         <li className="liMenuItem"> <FiMenu />
           <ul className="itensMenu">        
             <li> 
@@ -42,7 +49,6 @@ const MenuLeft : React.FC = () => {
             </li>
             <li> 
               <button className="btnMenuLeft" onClick={toGroupExpense}> <FiDollarSign size={30} />  Grupo de Lançamento </button>
-              {/* <a href="/groupexpense"> Grupo de Lançamento </a> */}
             </li>
             <li> 
               
@@ -50,7 +56,7 @@ const MenuLeft : React.FC = () => {
             </li>
           </ul>
         </li>  
-      </ul>
+      </ul> */}
 
     </div>
   );
