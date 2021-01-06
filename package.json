@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/react-modal": "^3.10.6",
     "@types/react-router-dom": "^5.1.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.0",
     "browserlist": "^1.0.1",
     "cep-promise": "^3.0.9",
